@@ -4,22 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= isset($title) ? $title : 'SMK Shop'; ?></title>
+    <title><?= isset($title) ? $title : 'Nazkuy'; ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
 
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#4A6CF7',
+                            hover: '#3A5CE5',
+                        },
+                        lavender: '#F3F4FF',
+                        light: '#E1E7FE',
+                        dark: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        '5xl': '28px',
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
         :root {
-            --primary-blue: #2563eb;
-            /* Biru modern (Royal Blue) */
-            --hover-blue: #1d4ed8;
-            --light-blue: #eff6ff;
+            --primary-blue: #4A6CF7;
+            --hover-blue: #3A5CE5;
+            --light-blue: #E1E7FE;
             --text-dark: #1e293b;
         }
 
         body {
-            background-color: #f8fafc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F3F4FF;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* Navbar dengan efek Glassmorphism (Kaca) */
