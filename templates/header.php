@@ -135,7 +135,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <i class="bi bi-bag-heart-fill fs-3 me-2" style="color: var(--primary-blue);"></i>
-                <span class="fw-bold brand-text fs-4">SMK<span class="brand-highlight">PEDIA</span></span>
+                <span class="fw-bold brand-text fs-4">NAZKY<span class="brand-highlight">PEDIA</span></span>
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
