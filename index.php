@@ -144,20 +144,22 @@ include_once 'templates/header.php';
                         <div class="card-body pt-1 pb-4 px-4 d-flex flex-column">
                             <!-- Kategori -->
                             <p class="text-muted fw-medium mb-1" style="font-size: 0.8rem; letter-spacing: 0.5px;">
-                            
-                                <?= strtoupper($row['nama_kategori']) ?></p>
+
+                                <?= strtoupper($row['nama_kategori']) ?>
+                            </p>
                             <!-- Judul Produk Bold -->
 
-                                                        <h6 class="card-title fw-bold mb-3 fs-5" style="color: var(--text-dark, #1e293b);">
-                                <?= $row['nama_produk'] ?></h6>
+                            <h6 class="card-title fw-bold mb-3 fs-5" style="color: var(--text-dark, #1e293b);">
+                                <?= $row['nama_produk'] ?>
+                            </h6>
                             <!-- Harga di Bawah -->
                             <div class="mt-auto">
                                 <span
                                     class="fw-bold fs-5 text-primary-custom"><?= $pbo->formatHarga($row['harga']) ?></span>
                             </div>
                         </div>
-                        </div>
                     </div>
+                </div>
             <?php endwhile; ?>
         </div>
     </div>
@@ -171,8 +173,8 @@ include_once 'templates/header.php';
                 <div class="category-card p-4 h-100 shadow-sm border-0">
                     <h4 class="fw-bold mb-1" style="color: #1e293b;">Speaker</h4>
                     <a href="#" class="text-secondary text-decoration-none small fw-medium">View Accessories ></a>
-                    <img src="https://via.placeholder.com/200x150/cbd5e1/475569?text=Speaker+Img" alt="Speaker"
-                        class="category-img shadow" style="border-radius: 16px 0 0 0;">
+                    <img src="assets/img/Airpods.png" alt="Speaker" class="category-img shadow"
+                        style="border-radius: 16px 0 0 0;">
                 </div>
             </div>
             <!-- Kategori 2 -->
@@ -180,8 +182,8 @@ include_once 'templates/header.php';
                 <div class="category-card p-4 h-100 shadow-sm border-0">
                     <h4 class="fw-bold mb-1" style="color: #1e293b;">Accessories</h4>
                     <a href="#" class="text-secondary text-decoration-none small fw-medium">View Accessories ></a>
-                    <img src="https://via.placeholder.com/200x150/cbd5e1/475569?text=Accessories+Img" alt="Accessories"
-                        class="category-img shadow" style="border-radius: 16px 0 0 0;">
+                    <img src="assets/img/Airpods.png" alt="Accessories" class="category-img shadow"
+                        style="border-radius: 16px 0 0 0;">
                 </div>
             </div>
             <!-- Kategori 3 -->
@@ -189,8 +191,8 @@ include_once 'templates/header.php';
                 <div class="category-card p-4 h-100 shadow-sm border-0">
                     <h4 class="fw-bold mb-1" style="color: #1e293b;">Wireless Charger</h4>
                     <a href="#" class="text-secondary text-decoration-none small fw-medium">View Accessories ></a>
-                    <img src="https://via.placeholder.com/200x150/cbd5e1/475569?text=Charger+Img" alt="Charger"
-                        class="category-img shadow" style="border-radius: 16px 0 0 0;">
+                    <img src="assets/img/Airpods.png" alt="Charger" class="category-img shadow"
+                        style="border-radius: 16px 0 0 0;">
                 </div>
             </div>
         </div>

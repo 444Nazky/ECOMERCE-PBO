@@ -52,7 +52,7 @@
             <div class="col-md-4 mb-4">
                 <a class="text-decoration-none d-flex align-items-center mb-3" href="index.php">
                     <i class="bi bi-bag-heart-fill fs-3 me-2" style="color: var(--primary-blue);"></i>
-                    <span class="fw-bold fs-4 text-white">SMK<span
+                    <span class="fw-bold fs-4 text-white">NAZKY<span
                             style="color: var(--primary-blue);">PEDIA</span></span>
                 </a>
                 <p class="small" style="color: #94a3b8; line-height: 1.6;">
