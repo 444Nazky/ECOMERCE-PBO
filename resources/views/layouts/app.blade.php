@@ -251,7 +251,7 @@
                 </div>
 
                 <div class="col-md-3 mb-4 text-center">
-                    <h6 class="fw-bold text-white mb-3">Ikuti Kami</h6>
+                    <h6 class="fw-bold text-white mb-3">Follow Us!</h6>
                     <div class="fs-4 d-flex justify-content-center gap-4">
                         <i class="bi bi-instagram social-icon" title="Instagram"></i>
                         <i class="bi bi-facebook social-icon" title="Facebook"></i>
