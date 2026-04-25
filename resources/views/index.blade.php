@@ -1,11 +1,6 @@
-<?php
-require_once 'classes/Product.php';
-$pbo = new Product();
-$dataProduk = $pbo->read();
-$title = "Nazkuy";
-include_once 'templates/header.php';
-?>
+@extends('layouts.app')
 
+@section('content')
 <style>
     /* Styling khusus UI Modern Crescendo di index.php */
     .hero-bg {
@@ -133,34 +128,34 @@ include_once 'templates/header.php';
         </div>
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-            <?php while ($row = $dataProduk->fetch_assoc()): ?>
+            @while ($row = $dataProduk->fetch_assoc())
                 <div class="col">
                     <div class="card h-100 border-0 product-card-bg">
                         <!-- Placeholder Gambar Produk -->
                         <div class="p-3">
-                            <img src="../assets/img/<?= urlencode($row['nama_produk']) ?>" class="card-img-top rounded-3"
-                                alt="<?= $row['nama_produk'] ?>">
+                            <img src="{{ asset('assets/img/' . urlencode($row['nama_produk'])) }}" class="card-img-top rounded-3"
+                                alt="{{ $row['nama_produk'] }}">
                         </div>
                         <div class="card-body pt-1 pb-4 px-4 d-flex flex-column">
                             <!-- Kategori -->
                             <p class="text-muted fw-medium mb-1" style="font-size: 0.8rem; letter-spacing: 0.5px;">
 
-                                <?= strtoupper($row['nama_kategori']) ?>
+                                {{ strtoupper($row['nama_kategori']) }}
                             </p>
                             <!-- Judul Produk Bold -->
 
                             <h6 class="card-title fw-bold mb-3 fs-5" style="color: var(--text-dark, #1e293b);">
-                                <?= $row['nama_produk'] ?>
+                                {{ $row['nama_produk'] }}
                             </h6>
                             <!-- Harga di Bawah -->
                             <div class="mt-auto">
                                 <span
-                                    class="fw-bold fs-5 text-primary-custom"><?= $pbo->formatHarga($row['harga']) ?></span>
+                                    class="fw-bold fs-5 text-primary-custom">{{ $pbo->formatHarga($row['harga']) }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php endwhile; ?>
+            @endwhile
         </div>
     </div>
 
@@ -173,7 +168,7 @@ include_once 'templates/header.php';
                 <div class="category-card p-4 h-100 shadow-sm border-0">
                     <h4 class="fw-bold mb-1" style="color: #1e293b;">Speaker</h4>
                     <a href="#" class="text-secondary text-decoration-none small fw-medium">View Accessories ></a>
-                    <img src="assets/img/Airpods.png" alt="Speaker" class="category-img shadow"
+                    <img src="{{ asset('assets/img/Airpods.png') }}" alt="Speaker" class="category-img shadow"
                         style="border-radius: 16px 0 0 0;">
                 </div>
             </div>
@@ -182,7 +177,7 @@ include_once 'templates/header.php';
                 <div class="category-card p-4 h-100 shadow-sm border-0">
                     <h4 class="fw-bold mb-1" style="color: #1e293b;">Accessories</h4>
                     <a href="#" class="text-secondary text-decoration-none small fw-medium">View Accessories ></a>
-                    <img src="assets/img/Airpods.png" alt="Accessories" class="category-img shadow"
+                    <img src="{{ asset('assets/img/Airpods.png') }}" alt="Accessories" class="category-img shadow"
                         style="border-radius: 16px 0 0 0;">
                 </div>
             </div>
@@ -191,7 +186,7 @@ include_once 'templates/header.php';
                 <div class="category-card p-4 h-100 shadow-sm border-0">
                     <h4 class="fw-bold mb-1" style="color: #1e293b;">Wireless Charger</h4>
                     <a href="#" class="text-secondary text-decoration-none small fw-medium">View Accessories ></a>
-                    <img src="assets/img/Airpods.png" alt="Charger" class="category-img shadow"
+                    <img src="{{ asset('assets/img/Airpods.png') }}" alt="Charger" class="category-img shadow"
                         style="border-radius: 16px 0 0 0;">
                 </div>
             </div>
@@ -239,5 +234,4 @@ include_once 'templates/header.php';
         </div>
     </div>
 </div>
-
-<?php include_once 'templates/footer.php'; ?>
+@endsection
