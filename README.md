@@ -36,13 +36,17 @@ php artisan serve --host 127.0.0.1 --port 8000
 
 ## Add and remove product (Seller Center)
 
+### Where is the page?
+- **Home / product list**: http://127.0.0.1:8000/
+- **Seller Center (admin)**: http://127.0.0.1:8000/admin
+
 ### Add product
-1. Go to **Seller Center**: http://127.0.0.1:8000/admin
+1. Open **Seller Center**: http://127.0.0.1:8000/admin
 2. Click **Tambah Produk**.
 3. Fill in the form (Nama Produk, Kategori, Harga, Deskripsi) and click **Simpan**.
 
 ### Remove product
-1. Go to **Seller Center**: http://127.0.0.1:8000/admin
+1. Open **Seller Center**: http://127.0.0.1:8000/admin
 2. Click **Hapus** on the product row.
 3. Confirm the popup.
 
@@ -50,6 +54,7 @@ php artisan serve --host 127.0.0.1 --port 8000
 - Add: `POST /tambah`
 - Update: `POST /edit/{id}`
 - Delete: `GET /delete/{id}`
+
 
 
 ## About Laravel

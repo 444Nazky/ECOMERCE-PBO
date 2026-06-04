@@ -45,3 +45,19 @@ Route::get('/delete/{id}', function ($id) {
     $pbo->delete($id);
     return redirect('/admin');
 });
+
+Route::get('/produk/{id}', function ($id) {
+    $pbo = new Product();
+    $product = $pbo->getById($id);
+    $title = $product['nama_produk'] ?? 'Produk';
+
+    return view('produk', compact('product', 'title', 'pbo'));
+});
+
+Route::get('/produk', function () {
+    $pbo = new Product();
+    $dataProduk = $pbo->read();
+    $title = 'Semua Produk';
+
+    return view('produk_list', compact('dataProduk', 'title', 'pbo'));
+});

@@ -162,7 +162,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <i class="bi bi-bag-heart-fill fs-3 me-2" style="color: var(--primary-blue);"></i>
-                <span class="fw-bold brand-text fs-4">nanas<span class="brand-highlight">pedia</span></span>
+                <span class="fw-bold brand-text fs-4">nanas<span class="brand-highlight">pedia katalog</span></span>
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
@@ -189,11 +189,6 @@
                                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-white border-2">
                                 0
                             </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-primary px-4 py-2" href="{{ url('/admin') }}">
-                            <i class="bi bi-shop me-1"></i> Seller Center
                         </a>
                     </li>
                 </ul>

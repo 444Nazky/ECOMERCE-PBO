@@ -125,35 +125,37 @@
         <div class="mb-5 mt-5">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h3 class="fw-bold mb-0" style="color: var(--text-dark, #1e293b);">Featured Products</h3>
-                <a href="#" class="text-primary-custom text-decoration-none fw-semibold">View All ></a>
+                <a href="{{ url('/produk') }}" class="text-primary-custom text-decoration-none fw-semibold">View All ></a>
             </div>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
                 @while ($row = $dataProduk->fetch_assoc())
                     <div class="col">
-                        <div class="card h-100 border-0 product-card-bg">
-                            <!-- Placeholder Gambar Produk -->
-                            <div class="p-3">
-                                <img src="{{ asset('assets/img/' . urlencode($row['nama_produk'])) }}"
-                                    class="card-img-top rounded-3" alt="{{ $row['nama_produk'] }}">
-                            </div>
-                            <div class="card-body pt-1 pb-4 px-4 d-flex flex-column">
-                                <!-- Kategori -->
-                                <p class="text-muted fw-medium mb-1" style="font-size: 0.8rem; letter-spacing: 0.5px;">
+                        <a href="{{ url('/produk/' . $row['id_produk']) }}" class="text-decoration-none">
+                            <div class="card h-100 border-0 product-card-bg">
+                                <!-- Placeholder Gambar Produk -->
+                                <div class="p-3">
+                                    <img src="{{ asset('assets/img/' . urlencode($row['nama_produk'])) }}"
+                                        class="card-img-top rounded-3" alt="{{ $row['nama_produk'] }}">
+                                </div>
+                                <div class="card-body pt-1 pb-4 px-4 d-flex flex-column">
+                                    <!-- Kategori -->
+                                    <p class="text-muted fw-medium mb-1" style="font-size: 0.8rem; letter-spacing: 0.5px;">
 
-                                    {{ strtoupper($row['nama_kategori']) }}
-                                </p>
-                                <!-- Judul Produk Bold -->
+                                        {{ strtoupper($row['nama_kategori']) }}
+                                    </p>
+                                    <!-- Judul Produk Bold -->
 
-                                <h6 class="card-title fw-bold mb-3 fs-5" style="color: var(--text-dark, #1e293b);">
-                                    {{ $row['nama_produk'] }}
-                                </h6>
-                                <!-- Harga di Bawah -->
-                                <div class="mt-auto">
-                                    <span class="fw-bold fs-5 text-primary-custom">{{ $pbo->formatHarga($row['harga']) }}</span>
+                                    <h6 class="card-title fw-bold mb-3 fs-5" style="color: var(--text-dark, #1e293b);">
+                                        {{ $row['nama_produk'] }}
+                                    </h6>
+                                    <!-- Harga di Bawah -->
+                                    <div class="mt-auto">
+                                        <span class="fw-bold fs-5 text-primary-custom">{{ $pbo->formatHarga($row['harga']) }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endwhile
             </div>
