@@ -49,7 +49,6 @@
             font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        /* Navbar dengan efek Glassmorphism (Kaca) */
         .navbar {
             background-color: rgba(255, 255, 255, 0.9) !important;
             backdrop-filter: blur(10px);
@@ -57,7 +56,6 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        /* Styling Teks Logo */
         .brand-text {
             color: var(--text-dark);
         }
@@ -66,7 +64,6 @@
             color: var(--primary-blue);
         }
 
-        /* Tombol Utama (Seller Center) dengan Gradasi & Shadow */
         .btn-primary {
             background: linear-gradient(135deg, #3b82f6, var(--primary-blue));
             border: none;
@@ -82,7 +79,6 @@
             box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
         }
 
-        /* Kolom Pencarian Custom */
         .search-box {
             border: 2px solid #e2e8f0;
             border-radius: 8px;
@@ -109,7 +105,6 @@
             background-color: var(--light-blue);
         }
 
-        /* Ikon Keranjang Interaktif */
         .nav-icon {
             color: #475569;
             transition: all 0.3s ease;
@@ -120,18 +115,8 @@
             transform: scale(1.15) rotate(-5deg);
         }
 
-        /* Kartu Produk (Untuk index.php nanti) */
-        .card-product:hover {
-            transform: translateY(-5px);
-            transition: 0.3s;
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.1);
-            border-color: var(--light-blue);
-        }
-
-        /* Tambahan Styling Khusus Footer */
         .footer-custom {
             background-color: #0f172a;
-            /* Biru gelap elegan (Slate) */
             color: #f8fafc;
             border-top: 4px solid var(--primary-blue);
         }
@@ -147,7 +132,6 @@
         .footer-link:hover {
             color: var(--light-blue);
             transform: translateX(5px);
-            /* Efek geser kanan saat disorot */
         }
 
         .social-icon {
@@ -159,7 +143,6 @@
         .social-icon:hover {
             color: var(--primary-blue);
             transform: translateY(-5px) scale(1.1);
-            /* Efek melompat */
         }
 
         .shipping-icon {
@@ -179,7 +162,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <i class="bi bi-bag-heart-fill fs-3 me-2" style="color: var(--primary-blue);"></i>
-                <span class="fw-bold brand-text fs-4">NAZKY<span class="brand-highlight">PEDIA</span></span>
+                <span class="fw-bold brand-text fs-4">nanas<span class="brand-highlight">pedia</span></span>
             </a>
 
             <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
@@ -217,6 +200,7 @@
             </div>
         </div>
     </nav>
+
     <main class="py-4">
         @yield('content')
     </main>
@@ -288,3 +272,4 @@
 </body>
 
 </html>
+

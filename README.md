@@ -7,9 +7,37 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Run the app (localhost)
+
+1) Install dependencies
+```bash
+composer install
+npm install
+```
+
+2) Configure database
+- Edit `.env` and set your `DB_*` variables.
+- Run migrations (and seed if needed):
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+3) Start the server
+```bash
+php artisan serve --host 127.0.0.1 --port 8000
+```
+
+4) Open in browser
+- Home: http://127.0.0.1:8000/
+- Seller Center: http://127.0.0.1:8000/admin
+
+---
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Powerful dependency injection container](https://laravel.com/docs/container).
