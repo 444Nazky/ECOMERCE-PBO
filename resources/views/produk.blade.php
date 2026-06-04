@@ -26,10 +26,12 @@
                             $imageName = $product['nama_produk'] ?? '';
                         @endphp
                         @if(!empty($imageName))
-                            <img
-                                src="{{ asset('assets/img/' . urlencode($imageName)) }}"
+                                <img
+                                src="{{ file_exists(public_path('assets/img/' . ($product['id_produk'] ?? '') . '.jpg'))
+                                    ? asset('assets/img/' . ($product['id_produk'] ?? '') . '.jpg')
+                                    : asset('assets/img/default.png') }}"
                                 class="card-img-top rounded-3"
-                                alt="{{ $imageName }}"
+                                alt="{{ $product['nama_produk'] ?? $title ?? 'Produk' }}"
                                 style="width: 100%; height: auto; object-fit: cover;"
                             >
                         @else

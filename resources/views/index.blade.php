@@ -135,8 +135,10 @@
                             <div class="card h-100 border-0 product-card-bg">
                                 <!-- Placeholder Gambar Produk -->
                                 <div class="p-3">
-                                    <img src="{{ asset('assets/img/' . urlencode($row['nama_produk'])) }}"
-                                        class="card-img-top rounded-3" alt="{{ $row['nama_produk'] }}">
+                                <img src="{{ file_exists(public_path('assets/img/' . ($row['id_produk'] ?? '') . '.jpg'))
+                                    ? asset('assets/img/' . ($row['id_produk'] ?? '') . '.jpg')
+                                    : asset('assets/img/default.png') }}"
+                                    class="card-img-top rounded-3" alt="{{ $row['nama_produk'] }}">
                                 </div>
                                 <div class="card-body pt-1 pb-4 px-4 d-flex flex-column">
                                     <!-- Kategori -->

@@ -12,7 +12,9 @@
                     <a href="{{ url('/produk/' . $row['id_produk']) }}" class="text-decoration-none">
                         <div class="card h-100 border-0 product-card-bg">
                             <div class="p-3">
-                                <img src="{{ asset('assets/img/' . urlencode($row['nama_produk'])) }}"
+                                <img src="{{ file_exists(public_path('assets/img/' . ($row['id_produk'] ?? '') . '.jpg'))
+                                    ? asset('assets/img/' . ($row['id_produk'] ?? '') . '.jpg')
+                                    : asset('assets/img/default.png') }}"
                                     class="card-img-top rounded-3" alt="{{ $row['nama_produk'] }}">
                             </div>
 

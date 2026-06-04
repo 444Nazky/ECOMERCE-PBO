@@ -37,7 +37,7 @@ class Product extends Database implements ProductInterface
 
         if ($this->conn->query($sql)) {
             $this->logAction("Produk '$nama' berhasil ditambahkan.");
-            return true;
+            return $this->conn->insert_id; // id_produk terbaru
         }
         return false;
     }

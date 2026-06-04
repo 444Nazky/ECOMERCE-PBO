@@ -22,7 +22,21 @@ Route::get('/admin', function () {
 Route::match(['get', 'post'], '/tambah', function (Request $request) {
     if ($request->isMethod('post')) {
         $p = new Product();
-        $p->create($request->input('id_kat'), $request->input('nama'), $request->input('harga'), $request->input('desc'));
+
+        $newId = $p->create(
+            $request->input('id_kat'),
+            $request->input('nama'),
+            $request->input('harga'),
+            $request->input('desc')
+        );
+
+        // upload gambar opsional -> simpan sebagai {id_produk}.jpg
+        if ($request->hasFile('gambar') && $request->file('gambar')->isValid() && $newId) {
+            $file = $request->file('gambar');
+            $targetPath = public_path('assets/img/' . $newId . '.jpg');
+            $file->move(public_path('assets/img'), $newId . '.jpg');
+        }
+
         return redirect('/admin');
     }
     $title = "Tambah Produk - PBO";
@@ -31,10 +45,25 @@ Route::match(['get', 'post'], '/tambah', function (Request $request) {
 
 Route::match(['get', 'post'], '/edit/{id}', function (Request $request, $id) {
     $pbo = new Product();
+
     if ($request->isMethod('post')) {
-        $pbo->update($id, $request->input('id_kat'), $request->input('nama'), $request->input('harga'), $request->input('desc'));
+        $pbo->update(
+            $id,
+            $request->input('id_kat'),
+            $request->input('nama'),
+            $request->input('harga'),
+            $request->input('desc')
+        );
+
+        // upload gambar opsional -> simpan sebagai {id_produk}.jpg
+        if ($request->hasFile('gambar') && $request->file('gambar')->isValid()) {
+            $file = $request->file('gambar');
+            $file->move(public_path('assets/img'), $id . '.jpg');
+        }
+
         return redirect('/admin');
     }
+
     $product = $pbo->getById($id);
     $title = "Edit Produk - PBO";
     return view('edit', compact('product', 'title'));

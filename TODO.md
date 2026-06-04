@@ -1,0 +1,13 @@
+- [ ] Add optional image upload input to resources/views/tambah.blade.php
+- [ ] Add optional image upload input to resources/views/edit.blade.php
+- [ ] Update classes/Product.php::create to return inserted id_produk
+- [ ] Update routes/web.php POST /tambah to save uploaded image to public/assets/img/{id_produk}.jpg
+- [ ] Update routes/web.php POST /edit/{id} to save uploaded image to public/assets/img/{id}.jpg
+- [ ] Update image rendering in:
+  - [ ] resources/views/index.blade.php
+  - [ ] resources/views/produk_list.blade.php
+  - [ ] resources/views/produk.blade.php
+- [ ] Quick manual test flow:
+  - [ ] Upload product without image => default.png shown
+  - [ ] Upload product with image => /produk/{id} shows uploaded image
+  - [ ] Featured products links still work
