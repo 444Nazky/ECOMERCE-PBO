@@ -46,8 +46,9 @@ If the issue persists:
 4. Ensure PHP extensions are installed:
    - `mysqli` or `pdo_mysql` must be enabled
    - Run: `php -m | grep -i mysql` to verify
-   - On Debian/Ubuntu: `apt-get install php-mysqli`
+   - On Debian/Ubuntu: `apt-get install php-mysqli` or `apt-get install php-pdo-mysql`
    - Or enable extension in `php.ini`: `extension=mysqli`
+   - If getting "could not find driver", ensure `pdo_mysql.so` is in `extension_dir` and uncomment `extension=pdo_mysql` in `php.ini`
 5. Run migrations (and seed if needed):
    ```bash
    php artisan migrate
