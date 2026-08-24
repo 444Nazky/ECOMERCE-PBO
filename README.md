@@ -9,22 +9,20 @@
 
 ## Run the app (localhost)
 
-1) Install dependencies
+### Step 1: Install dependencies
 ```bash
 composer install
 npm install
 ```
 
-2) **Troubleshooting: vendor/autoload.php not found**
-
-If you encounter the error:
+### Step 2: Troubleshooting - vendor/autoload.php not found
+If you encounter this error:
 ```
 PHP Warning: require(/home/.../vendor/autoload.php): Failed to open stream: No such file or directory
 PHP Fatal error: Failed opening required 'vendor/autoload.php'
 ```
 
-This means Composer dependencies have not been installed. Run the following command in the project root:
-
+This means Composer dependencies have not been installed. Run:
 ```bash
 composer install
 ```
@@ -33,25 +31,30 @@ If the issue persists:
 - Ensure `composer.json` exists and is valid
 - Run `composer dump-autoload` to regenerate the autoloader
 - Delete `composer.lock` and run `composer install` again
-- Verify that the `vendor/` directory is created after running the command
+- Verify that the `vendor/` directory is created
 
-2) Configure database
-- Edit `.env` and set your `DB_*` variables.
-- Run migrations (and seed if needed):
-```bash
-php artisan migrate
-php artisan db:seed
-```
+### Step 3: Configure database
+1. Copy `.env.example` to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Edit `.env` and set your `DB_*` variables (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
+3. Run migrations (and seed if needed):
+   ```bash
+   php artisan migrate
+   php artisan db:seed
+   ```
 
-3) Start the server
+### Step 4: Start the server
 ```bash
 php artisan serve --host 127.0.0.1 --port 8000
 ```
 
-4) Open in browser
+Server will be running on: http://127.0.0.1:8000
+
+### Step 5: Open in browser
 - Home: http://127.0.0.1:8000/
 - Seller Center: http://127.0.0.1:8000/admin
-
 ---
 
 ## Add and remove product (Seller Center)
