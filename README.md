@@ -43,7 +43,12 @@ If the issue persists:
    php artisan key:generate
    ```
 3. Edit `.env` and set your `DB_*` variables (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
-3. Run migrations (and seed if needed):
+4. Ensure PHP extensions are installed:
+   - `mysqli` or `pdo_mysql` must be enabled
+   - Run: `php -m | grep -i mysql` to verify
+   - On Debian/Ubuntu: `apt-get install php-mysqli`
+   - Or enable extension in `php.ini`: `extension=mysqli`
+5. Run migrations (and seed if needed):
    ```bash
    php artisan migrate
    php artisan db:seed
