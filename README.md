@@ -38,7 +38,11 @@ If the issue persists:
    ```bash
    cp .env.example .env
    ```
-2. Edit `.env` and set your `DB_*` variables (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
+2. Generate Laravel application key:
+   ```bash
+   php artisan key:generate
+   ```
+3. Edit `.env` and set your `DB_*` variables (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
 3. Run migrations (and seed if needed):
    ```bash
    php artisan migrate
