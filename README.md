@@ -33,6 +33,125 @@ If the issue persists:
 - Delete `composer.lock` and run `composer install` again
 - Verify that the `vendor/` directory is created
 
+---
+
+## Troubleshooting - Database Connection (Arch Linux)
+
+If you encounter:
+```
+SQLSTATE[HY000] [2002] Connection refused
+```
+
+### Step 1: Check MariaDB Service Status
+```bash
+systemctl status mariadb
+```
+
+**If MariaDB is not running (failed/active: inactive):**
+```bash
+sudo systemctl start mariadb
+```
+
+**If MariaDB won't start and shows errors like:**
+```
+Can't open and lock privilege tables: Table 'mysql.db' doesn't exist
+```
+The database needs to be re-initialized:
+
+```bash
+# 1. Stop MariaDB
+sudo systemctl stop mariadb
+
+# 2. Backup old data (if needed)
+sudo mv /var/lib/mysql /var/lib/mysql.bak
+
+# 3. Re-initialize MariaDB
+sudo mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
+# 4. Start MariaDB
+sudo systemctl start mariadb
+```
+
+### Step 2: Configure Database Access
+
+Connect to MariaDB and set up the database:
+```bash
+sudo mariadb
+```
+
+Inside MariaDB shell:
+```sql
+-- Create your database (match .env DB_DATABASE)
+CREATE DATABASE IF NOT EXISTS db_toko;
+
+-- Allow root connections via TCP/IP (for 127.0.0.1 connections)
+CREATE USER IF NOT EXISTS 'root'@'127.0.0.1' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'127.0.0.1' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
+
+Exit with `EXIT;`
+
+### Step 3: Verify .env Configuration
+
+Check your `.env` file:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1      # IMPORTANT: Use 127.0.0.1, NOT localhost
+DB_PORT=3306
+DB_DATABASE=db_toko
+DB_USERNAME=root
+DB_PASSWORD=            # Leave empty if no password set
+```
+
+### Step 4: Clear Config Cache
+```bash
+php artisan config:clear
+```
+
+### Step 5: Run Migrations
+```bash
+php artisan migrate
+```
+
+### Step 6: Create Custom Tables (if using Product.php)
+
+If you're using the custom `classes/Product.php` with `mysqli`, create the required tables:
+```bash
+sudo mariadb db_toko -e "
+CREATE TABLE IF NOT EXISTS kategori (
+    id_kategori INT AUTO_INCREMENT PRIMARY KEY,
+    nama_kategori VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS produk (
+    id_produk INT AUTO_INCREMENT PRIMARY KEY,
+    id_kategori INT NOT NULL,
+    nama_produk VARCHAR(255) NOT NULL,
+    harga DECIMAL(10,2) NOT NULL,
+    deskripsi TEXT,
+    FOREIGN KEY (id_kategori) REFERENCES kategori(id_kategori) ON DELETE CASCADE
+);
+"
+```
+
+### Step 7: Restart the Server
+```bash
+php artisan serve --host 127.0.0.1 --port 8000
+```
+
+---
+
+### Quick Fix Checklist
+
+| Check | Command |
+|-------|---------|
+| MariaDB running? | `systemctl status mariadb` |
+| Can connect? | `sudo mariadb -e "SHOW DATABASES;"` |
+| Database exists? | `sudo mariadb -e "SHOW DATABASES LIKE 'db_toko';"` |
+| Tables exist? | `sudo mariadb db_toko -e "SHOW TABLES;"` |
+| Clear config cache? | `php artisan config:clear` |
+
 ### Step 3: Configure database
 1. Copy `.env.example` to `.env`:
    ```bash
