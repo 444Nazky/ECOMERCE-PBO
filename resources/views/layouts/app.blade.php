@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $title ?? 'Nazkuy' }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#4A6CF7',
+                            hover: '#3A5CE5',
+                        },
+                        lavender: '#F3F4FF',
+                        light: '#E1E7FE',
+                        dark: '#1e293b'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '4xl': '24px',
+                        '5xl': '28px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --primary-blue: #4A6CF7;
+            --hover-blue: #3A5CE5;
+            --light-blue: #E1E7FE;
+            --text-dark: #1e293b;
+        }
+
+        body {
+            background-color: #F3F4FF;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .brand-text {
+            color: var(--text-dark);
+        }
+
+        .brand-highlight {
+            color: var(--primary-blue);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, var(--primary-blue));
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--primary-blue), var(--hover-blue));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .search-box {
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 4px var(--light-blue);
+        }
+
+        .search-box input {
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .search-box button {
+            border: none !important;
+            background: transparent;
+            color: var(--primary-blue);
+        }
+
+        .search-box button:hover {
+            background-color: var(--light-blue);
+        }
+
+        .nav-icon {
+            color: #475569;
+            transition: all 0.3s ease;
+        }
+
+        .nav-icon:hover {
+            color: var(--primary-blue);
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .footer-custom {
+            background-color: #0f172a;
+            color: #f8fafc;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .footer-link {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .footer-link:hover {
+            color: var(--light-blue);
+            transform: translateX(5px);
+        }
+
+        .social-icon {
+            color: #94a3b8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-blue);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .shipping-icon {
+            color: #475569;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .shipping-icon:hover {
+            color: var(--light-blue);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <i class="bi bi-bag-heart-fill fs-3 me-2" style="color: var(--primary-blue);"></i>
+                <span class="fw-bold brand-text fs-4">nanas<span class="brand-highlight">pedia katalog</span></span>
+            </a>
+
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <form class="d-flex ms-auto me-4 w-50">
+                    <div class="input-group search-box bg-white overflow-hidden">
+                        <input class="form-control py-2 ps-3" type="search"
+                            placeholder="Cari laptop, software, atau aksesori...">
+                        <button class="btn px-3" type="submit">
+                            <i class="bi bi-search fw-bold"></i>
+                        </button>
+                    </div>
+                </form>
+
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item me-4">
+                        <a class="nav-link position-relative nav-icon p-0" href="#">
+                            <i class="bi bi-cart3 fs-4"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-white border-2">
+                                0
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-4">
+        @yield('content')
+    </main>
+
+    <footer class="footer-custom pt-5 pb-4 mt-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <a class="text-decoration-none d-flex align-items-center mb-3" href="{{ url('/') }}">
+                        <i class="bi bi-bag-heart-fill fs-3 me-2" style="color: var(--primary-blue);"></i>
+                        <span class="fw-bold fs-4 text-white">NAZKY<span
+                                style="color: var(--primary-blue);">PEDIA</span></span>
+                    </a>
+                    <p class="small" style="color: #94a3b8; line-height: 1.6;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua.
+                    </p>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold text-white mb-3">Layanan</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="footer-link"><i class="bi bi-chevron-right small me-1"></i> Bantuan</a>
+                        </li>
+                        <li><a href="#" class="footer-link"><i class="bi bi-chevron-right small me-1"></i> Cara
+                                Bayar</a>
+                        </li>
+                        <li><a href="#" class="footer-link"><i class="bi bi-chevron-right small me-1"></i> Lacak
+                                Pesanan</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-4 text-center">
+                    <h6 class="fw-bold text-white mb-3">Follow Us!</h6>
+                    <div class="fs-4 d-flex justify-content-center gap-4">
+                        <i class="bi bi-instagram social-icon" title="Instagram"></i>
+                        <i class="bi bi-facebook social-icon" title="Facebook"></i>
+                        <i class="bi bi-youtube social-icon" title="YouTube"></i>
+                        <i class="bi bi-tiktok social-icon" title="TikTok"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h6 class="fw-bold text-white mb-3 text-md-end text-center">Metode Pengiriman</h6>
+                    <div class="d-flex flex-wrap gap-3 fs-3 justify-content-md-end justify-content-center">
+                        <i class="bi bi-truck shipping-icon" title="Reguler"></i>
+                        <i class="bi bi-box-seam shipping-icon" title="Kargo"></i>
+                        <i class="bi bi-bicycle shipping-icon" title="Sameday"></i>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" style="border-color: #334155;">
+
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small"
+                style="color: #64748b;">
+                <div class="mb-2 mb-md-0">
+                    &copy; {{ date('Y') }} SMK Plus Pelita Nusantara.
+                </div>
+                <div>
+                    Created by Nazky Narutama
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
