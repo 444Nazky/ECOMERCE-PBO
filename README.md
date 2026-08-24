@@ -15,6 +15,26 @@ composer install
 npm install
 ```
 
+2) **Troubleshooting: vendor/autoload.php not found**
+
+If you encounter the error:
+```
+PHP Warning: require(/home/.../vendor/autoload.php): Failed to open stream: No such file or directory
+PHP Fatal error: Failed opening required 'vendor/autoload.php'
+```
+
+This means Composer dependencies have not been installed. Run the following command in the project root:
+
+```bash
+composer install
+```
+
+If the issue persists:
+- Ensure `composer.json` exists and is valid
+- Run `composer dump-autoload` to regenerate the autoloader
+- Delete `composer.lock` and run `composer install` again
+- Verify that the `vendor/` directory is created after running the command
+
 2) Configure database
 - Edit `.env` and set your `DB_*` variables.
 - Run migrations (and seed if needed):
