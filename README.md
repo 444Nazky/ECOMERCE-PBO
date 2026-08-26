@@ -116,7 +116,7 @@ php artisan migrate
 
 ### Step 6: Create Custom Tables (if using Product.php)
 
-If you're using the custom `classes/Product.php` with `mysqli`, create the required tables:
+The `classes/Product.php` uses PDO (not mysqli). Create the required tables:
 ```bash
 sudo mariadb db_toko -e "
 CREATE TABLE IF NOT EXISTS kategori (
@@ -163,10 +163,10 @@ php artisan serve --host 127.0.0.1 --port 8000
    ```
 3. Edit `.env` and set your `DB_*` variables (DB_DATABASE, DB_USERNAME, DB_PASSWORD).
 4. Ensure PHP extensions are installed:
-   - `mysqli` or `pdo_mysql` must be enabled
-   - Run: `php -m | grep -i mysql` to verify
-   - On Debian/Ubuntu: `apt-get install php-mysqli` or `apt-get install php-pdo-mysql`
-   - Or enable extension in `php.ini`: `extension=mysqli`
+   - `pdo_mysql` must be enabled (the code uses PDO, not mysqli)
+   - Run: `php -m | grep -i pdo` to verify `pdo_mysql` is loaded
+   - On Debian/Ubuntu: `apt-get install php-pdo-mysql`
+   - Or enable extension in `php.ini`: `extension=pdo_mysql`
    - If getting "could not find driver", ensure `pdo_mysql.so` is in `extension_dir` and uncomment `extension=pdo_mysql` in `php.ini`
 5. Run migrations (and seed if needed):
    ```bash

@@ -10,10 +10,11 @@ class Product extends Database implements ProductInterface
     // Fungsi utama untuk mengambil data produk
     public function read()
     {
-        $query = "SELECT p.*, k.nama_kategori 
-                  FROM produk p 
+        $query = "SELECT p.*, k.nama_kategori
+                  FROM produk p
                   JOIN kategori k ON p.id_kategori = k.id_kategori";
-        return $this->conn->query($query);
+        $stmt = $this->conn->query($query);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function calculateTax($price)
@@ -28,34 +29,31 @@ class Product extends Database implements ProductInterface
 
     public function create($id_kat, $nama, $harga, $deskripsi)
     {
-        // Sanitasi input agar aman dari karakter aneh
-        $nama = $this->conn->real_escape_string($nama);
-        $deskripsi = $this->conn->real_escape_string($deskripsi);
-
-        $sql = "INSERT INTO produk (id_kategori, nama_produk, harga, deskripsi) 
-                VALUES ('$id_kat', '$nama', '$harga', '$deskripsi')";
-
-        if ($this->conn->query($sql)) {
+        $stmt = $this->conn->prepare("INSERT INTO produk (id_kategori, nama_produk, harga, deskripsi) VALUES (?, ?, ?, ?)");
+        if ($stmt->execute([$id_kat, $nama, $harga, $deskripsi])) {
             $this->logAction("Produk '$nama' berhasil ditambahkan.");
-            return $this->conn->insert_id; // id_produk terbaru
+            return $this->conn->lastInsertId();
         }
         return false;
     }
 
     public function getById($id)
     {
-        $result = $this->conn->query("SELECT * FROM produk WHERE id_produk = '$id'");
-        return $result->fetch_assoc();
+        $stmt = $this->conn->prepare("SELECT * FROM produk WHERE id_produk = ?");
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function update($id, $id_kat, $nama, $harga, $desc)
     {
-        return $this->conn->query("UPDATE produk SET id_kategori='$id_kat', nama_produk='$nama', harga='$harga', deskripsi='$desc' WHERE id_produk='$id'");
+        $stmt = $this->conn->prepare("UPDATE produk SET id_kategori=?, nama_produk=?, harga=?, deskripsi=? WHERE id_produk=?");
+        return $stmt->execute([$id_kat, $nama, $harga, $desc, $id]);
     }
 
     public function delete($id)
     {
-        return $this->conn->query("DELETE FROM produk WHERE id_produk = '$id'");
+        $stmt = $this->conn->prepare("DELETE FROM produk WHERE id_produk = ?");
+        return $stmt->execute([$id]);
     }
 
     public function formatHarga($angka)

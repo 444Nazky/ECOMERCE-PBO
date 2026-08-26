@@ -21,8 +21,8 @@
                 </thead>
                 <tbody>
                     @php $no = 1; @endphp
-                    @if($dataProduk && $dataProduk->num_rows > 0)
-                        @while($row = $dataProduk->fetch_assoc())
+                    @if($dataProduk && count($dataProduk) > 0)
+                        @foreach($dataProduk as $row)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td><span class="badge bg-secondary">{{ $row['nama_kategori'] }}</span></td>
@@ -33,7 +33,7 @@
                                 <a href="{{ url('/delete/' . $row['id_produk']) }}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus produk ini?')"><i class="bi bi-trash"></i> Hapus</a>
                             </td>
                         </tr>
-                        @endwhile
+                        @endforeach
                     @else
                     <tr>
                         <td colspan="5" class="text-center text-muted">Belum ada produk.</td>

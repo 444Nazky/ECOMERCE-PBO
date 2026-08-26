@@ -129,7 +129,7 @@
             </div>
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-                @while ($row = $dataProduk->fetch_assoc())
+                @foreach($dataProduk as $row)
                     <div class="col">
                         <a href="{{ url('/produk/' . $row['id_produk']) }}" class="text-decoration-none">
                             <div class="card h-100 border-0 product-card-bg">
@@ -159,7 +159,7 @@
                             </div>
                         </a>
                     </div>
-                @endwhile
+                @endforeach
             </div>
         </div>
 
